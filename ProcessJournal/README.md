@@ -27,7 +27,7 @@ level because I like that aspect of most games its
 interesting to me since it isn’t mandatory and adds a 
 challenge to every level.
 
-Here is the game: [Tiny Game Project](Projects/TinyPlatformer.html).
+Here is the game: [Tiny Game Project](../Projects/TinyPlatformer.html).
 
 Here are the 
 levels if you 
@@ -35,10 +35,14 @@ want to take a look before playing (they
 are pretty simple start at red get to green):
 
 
-![Level 1](Media/Level%201.png)
+![Level 1](Media/Level%201.png) 
+
 ![Level 2](Media/Level%202.png)
+
 ![Level 3](Media/Level%203.png)
+
 ![Level 4](Media/Level%204.png)
+
 ![Level 5](Media/Level%205.png)
 
 I had lots of fun doing this and kinda accomplished what I wanted to. I’m very excited to continue and use Unity and make something with more depth and on my own. The tool was very simple and easy to use and just allowed me to do the platformer I wanted.
