@@ -117,3 +117,7 @@ if I had more time to continue this game would be to add
 a little "cup" that would collect the balls and score 
 points if the player landed the balls inside. Would be 
 cool if we could expand on these games!
+
+I want to try EzGif for the games reminder!
+
+## Blank | 02.06.25
