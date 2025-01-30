@@ -55,8 +55,8 @@ Starting off I want to make a game where something gets
 stacked and the whole point is to stack a tower as high 
 as possible. I keep thinking of a game where you're 
 stacking burger toppings and condiments and trying to 
-make the burger as tall as possible. So that's what I'll 
-try. Lets go!
+make the burger as tall as possible without making it 
+tip over. So that's what I'll try. Lets go!
 
 Okay so I changed my thought process completely. I was 
 playing around with collisions and the physics behind 
@@ -72,13 +72,13 @@ looked up how to affect a force onto objects. I then
 attached that to the platform and add a key input so on 
 space bar they would get affected. When I added this 
 they would just become elongated and still don't move 
-because they are stuck to the platform.
+because they were still stuck to the platform.
 
 To beat this I made it no longer "stick" but just freeze 
 on spot. Basically just removed the collision box on 
 them and just had it pause. However, the circles still 
-bounce between each other. I also wanted it to be 
-relaxing/look cool, so I changed the colors as they 
+bounce between each other which I liked. I also wanted it 
+to be relaxing/look cool, so I changed the colors as they 
 dropped by just randomizing which ones are selected in 
 an array.
 
@@ -88,6 +88,20 @@ and then bounce them around. I added movement in the up
 and down direction so you can go freeze them and have 
 control to where they bounce. Furthermore, I added a box 
 that they collide off of.
+
+So a proper explanation of what I did was:
+
+1. Tried to make a game where objects stacked on each 
+   other and goal is to make it as high as possible
+2. Found a way to make the objects "stuck" when 
+   collision occured
+3. Instead of stacking objects, played around with a 
+   "force" concept that is triggered with space bar
+4. Added a box so all the circles would contain in the 
+   play area and added WASD movement
+5. Made it so any object touched by the platform gets 
+   frozen then can be re-animated by the "force" 
+   mechanic which causes a fun experience (I think). 
 
 Here is what it looks like:
 
