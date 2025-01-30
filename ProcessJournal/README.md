@@ -69,22 +69,22 @@ destroyed.
 
 I then was wondering how to make it interesting so I 
 looked up how to affect a force onto objects. I then 
-attatched that to the platform and add a key input so on 
+attached that to the platform and add a key input so on 
 space bar they would get affected. When I added this 
 they would just become elongated and still don't move 
 because they are stuck to the platform.
 
 To beat this I made it no longer "stick" but just freeze 
 on spot. Basically just removed the collision box on 
-them and just had it pause. However the circles still 
+them and just had it pause. However, the circles still 
 bounce between each other. I also wanted it to be 
-relaxing/look cool so I changed the colors as they 
+relaxing/look cool, so I changed the colors as they 
 dropped by just randomizing which ones are selected in 
 an array.
 
-It's more of an experience and not a game but I think it 
+It's more of an experience and not a game, but I think it 
 came out nicely where you just let the balls generate 
-and then bounce them arround. I added movement in the up 
+and then bounce them around. I added movement in the up 
 and down direction so you can go freeze them and have 
 control to where they bounce. Furthermore, I added a box 
 that they collide off of.
@@ -96,4 +96,10 @@ Here is what it looks like:
 Here is the game: [ExplodeGame](../Projects/StackerGame)
 
 Overall this was a fun experience and I had a great time 
-figuring out what I could accomplish and make something fun.
+figuring out what I could accomplish and make something 
+fun. I'm glad I got to play around with collisions, the 
+physics engine, and static/dynamic sprites. My thoughts 
+if I had more time to continue this game would be to add 
+a little "cup" that would collect the balls and score 
+points if the player landed the balls inside. Would be 
+cool if we could expand on these games!
