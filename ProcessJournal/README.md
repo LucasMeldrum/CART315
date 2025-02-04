@@ -118,6 +118,75 @@ a little "cup" that would collect the balls and score
 points if the player landed the balls inside. Would be 
 cool if we could expand on these games!
 
-I want to try EzGif for the games reminder!
+I want to try EzGif for the games !reminder!
 
-## Blank | 02.06.25
+## PowerPong | 02.06.25
+
+Note add power-ups so that it would be cool and GIFs
+
+Okay coming out of class with no real idea of what I 
+want to do. I think I want to put power-ups in the game 
+that have different triggers. I want to make a solid 
+three of them and make them generate randomly and be 
+collected by the paddle not the ball since I do not know 
+how to assign who would get it.
+
+So main three power-ups:
+1. Freeze: Freeze the opponent paddle. ~3s
+2. BigPaddle: Turn your own paddle big so that it covers 
+   more space. ~10s
+3. FastBall: Increase the speed of the ball. ~3s
+
+To implement these sounds I think I'll have to create 
+three sprites set them as prefabs and generate them 
+around the Scene so that OnColission they will trigger 
+whatever they need to trigger. That's my thought process 
+just create them and spawn them arround and once the 
+paddle comes into contact... bam trigger whatever I want 
+to accomplish. I am going to go test and I'll come back 
+and write out what happened.
+
+Okay! Done. I got to complete the game in one shot and 
+it was not too bad at all. I'll go through each power-up 
+and showcase what they do and how I managed to implement 
+them.
+#### 1. Freeze Power-up
+For the freeze power-up I had some difficulty freezing 
+the opponents paddle (not the one acquiring it). So what 
+I did to get around this was to check which paddle (left 
+or right) was coming into contact with the object then I 
+changed the speed in the "opponent's" script to 0. I 
+also had to store the paddle speed prior to this to set 
+it back after the timer of 3 seconds was done.
+![Freeze](Media/Freeze.gif)
+#### 2. BigPaddle Power-up
+So I started by saving the original size before the 
+power-up triggers so I could revert back once the it 
+ended. Then what I pretty much did was increase the 
+scale (in the y axis) by 1 whenever the paddle came into 
+contact with it. Then after 10 seconds it reverts back 
+to the original scale. Pretty simple and easy since it 
+just affects the paddle that is touching the power-up.
+![BigPaddle](Media/BigPaddle.gif)
+#### 3. FastBall Power-up
+Fastball was the easiest of the three power-ups since 
+all I really had to do was create a function on the ball 
+script that increased the speed of the ball object and 
+multiply it with the force. Also had to revert to the 
+original speed and to do so I just divided it by the same 
+amount applied.
+![FastBall](Media/Fastball.gif)
+
+For all the power-ups I made them change the color of 
+the paddles and gave them each their own color. 
+
+Red = FastBall
+<br>Blue = Freeze
+<br>Green = BigPaddle
+
+So thats pretty much it I got my power-ups added and 
+they work pretty seamlessly. Generating them was pretty 
+easy. I decided to put specific spawn areas for them in 
+the corners and set it so it would random pick one of 
+the spawn areas. 
+
