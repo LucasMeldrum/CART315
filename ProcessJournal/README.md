@@ -190,3 +190,57 @@ easy. I decided to put specific spawn areas for them in
 the corners and set it so it would random pick one of 
 the spawn areas. 
 
+## SomeBrickBreakerGame | 02.13.25
+
+Up until now I haven't really played with sprites, 
+animations or any visual aspects of the game at all. I 
+think this time I am going to try and focus on doing 
+that. So a menu screen, animation for the bricks 
+breaking, sprite for the ball and paddle that look goofy 
+maybe something more...
+
+We'll see I don't have much time this week a lot going 
+on but if I can learn a little about sprites that would 
+be nice. I want to do sprites since all I've focused on 
+until now is all game components and mechanics. Starting 
+now.
+
+Okay so I managed to add a function menu, some sprites 
+to the ball and paddle, and an animation for the balls 
+breaking. The animation part was a little tricky and had 
+some road blocks and it came out a little wonky but it 
+came out working so thats cool.
+
+Here is the menu:
+<br>![Menu](Media/MainMenu.gif)
+
+Pretty simple just play and quit buttons but its 
+functional and I did not know how to do this prior. 
+
+Next the animation.
+
+This is what I made using libresprite (thanks Sam):
+<br>![Animation](Media/Animation.gif)
+
+After making this animation I thought it would look like 
+how it is in libresprite but for some reason it did not. 
+In Unity, it removed all the white and when there were 
+gaps (the transparent parts on later frames) everything 
+just disappeared. I think Unity does not let an object 
+have empty space. I'm not sure. But the white being gone 
+kinda upset me. Whatever...
+
+Here's how it turned out in Unity with the extra sprites 
+for the ball and paddle:
+<br>![Gameplay](Media/Gameplay_Animation.gif)
+
+Not terrible not great. I learnt a lot about sprites, 
+animations and scenes this week which was nice. Happy 
+with what I did, a little annoyed about the animation 
+part but overall proud that I accomplished what I wanted 
+to in the end (with some minor mistakes).
+
+
+
+
+
