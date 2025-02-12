@@ -215,7 +215,13 @@ Here is the menu:
 <br>![Menu](Media/MainMenu.gif)
 
 Pretty simple just play and quit buttons but its 
-functional and I did not know how to do this prior. 
+functional and I did not know how to do this prior. I 
+had to create buttons and background which was new. I 
+also learnt how to switch scenes based on index so you 
+can randomly pick scenes (if you need that maybe I'll 
+try it in a later project). The hover aspect over the 
+buttons is cool too and I learnt about importing fonts 
+as well even though I did not implement it.
 
 Next the animation.
 
@@ -229,6 +235,18 @@ gaps (the transparent parts on later frames) everything
 just disappeared. I think Unity does not let an object 
 have empty space. I'm not sure. But the white being gone 
 kinda upset me. Whatever...
+
+Adding the animation took some time but in the end I got 
+there. I had to create a folder of 12+ sprites so that 
+the animation lasted 12 frames long and then played each 
+sprite/frame. It was also cool learning about the 
+animation controller which allows you to switch and do 
+different things. For example, the bricks by default are 
+in an "Idle" state and then once the "Break" triggers 
+(this is when the ball collides with the brick) it then 
+enters the "Animation" state and plays the animation I 
+set it to. Very sweet and I'll definitely be using this in 
+the future for other games.
 
 Here's how it turned out in Unity with the extra sprites 
 for the ball and paddle:
