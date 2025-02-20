@@ -260,6 +260,65 @@ to in the end (with some minor mistakes).
 
 ## 3DGame | 02.20.25
 
+I really did not want to continue doing the brickbreaker 
+game I don't know why. I wanted to try something new 
+this week entirely. Been thinking about the games I 
+usually play and what I like and it is mainly 3D shooter 
+games so maybe I'll start on that (just something simple)
+. So I thought of a camera that follows the player, a 
+camera hovering over the player (so third-person) and 
+maybe a shootable gun would be cool. So lets begin!
 
+#### Player Controls
+So starting with the controls... I did not know there 
+was a "new" version of Unity input controls. Interesting 
+so I gave it a chance and almost had it working but just 
+could not get it to function properly. I had it all 
+implemented properly it just would not see my move 
+function in my script sooo maybe at a later time I'll 
+try and fix it. I went with the classic inputs = 
+movement and got it to work pretty seemlessly with a 
+sphere on a little platform I made. NICE.
+
+#### Camera 
+Getting the camera to attach to the player was actually 
+a lot easier than I thought. It now follows the player 
+and never goes to far away which is cool. I had to play 
+around with the angles a bunch to make something that I 
+liked and didn't look to choppy. But basically I just 
+set it to always look at my "player" model and it 
+follows it!
+
+#### Gun/Bullets
+So doing this was a little harder because I needed not 
+only the gun and bullets but also where the bullets came 
+out from. Following a tutorial I was able to get it done 
+but at first it would shoot out from the inside of the 
+character because I had set the "end" of the gun inside 
+the player model. Once I had set it out I kept playing 
+around with its position until it looked like the player 
+was shooting it out from the front. And it follows the 
+player around as well so it moves as the player moves. 
+It shoots these little capsules that also have physics 
+so they roll for awhile until they get destroyed after a 
+certain amount of time it's really funny. They also 
+bounce of objects and stuff and I want to try and make 
+it launch things in the future. But for now I was proud 
+with what I accomplished. 
+
+Here's a little demo:
+<br>![Gameplay](Media/3D_Test.gif)
+
+So as you can see the camera follows the "player" 
+(sphere) around forward, back, left, right. And when you 
+click you shoot out these little pills that bounce 
+around and just launch forward. A little janky but I'm 
+happy with it and I definitely want to keep working on 
+it and maybe have incoming enemies that you have to 
+launch away or something like that. It was not that 
+difficult implementing everything since it was all 
+pretty simple concepts and used a lot of the same 
+physics, prefab and movement ideas we learnt doing 2D 
+games but I'm glad I got a little 3D game going.
 
 
