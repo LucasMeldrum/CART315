@@ -321,4 +321,100 @@ pretty simple concepts and used a lot of the same
 physics, prefab and movement ideas we learnt doing 2D 
 games but I'm glad I got a little 3D game going.
 
+## Extra Credit | 03.06.25
+
+My game of choice for a deeper analysis is the valve game Left 4 Dead 2. As a classic multiplayer zombie shooter this game seems simple at first but gets more complicated as you look at the nuances and detail that was put in the game by the developers. There are countless examples of this in the game, but I will focus on a few key aspects in this analysis.
+
+To begin with, the game is played in a team of 4 in coop or two teams of 4 in versus. It is played as a linear game where the “survivor” team must go from point A to B while facing off zombies. In versus mode the “infected” team must work together to stop the opposing survivor team from making it to the safe room. At all points of this game teamwork is a central aspect. Despite the name Left 4 Dead, rushing ahead or going solo will get you killed since special infected can grab/pin you down and the only way to escape is to be freed by a teammate.
+
+Now although at a glance it seems like a simple game, the developers make the game constantly dynamic and changing so it never gets stale. They do this by implementing what they call “The Director”. This director is a game modifier that changes how the map plays out, where zombies spawn, what items are found, and how difficult the level is. To put it simply; the better you are doing the harder the game gets. This makes the game always different each time you play it. The zombies never come from the same area, the maps never feel the same and even players (including myself) who have played the game extensively, don’t feel like that it gets repetitive.
+
+As I mentioned before, the main component of the game is the coop aspect. I love how it is a central part of the game. Without it you get overwhelmed very quickly and lose. Same with the “infected” team in the versus mode. If you don’t work as a team and coordinate attacks the survivors are going to run past without a scratch. It makes the game competitive and balanced since both teams get to play as survivors and infected in the same round to see who makes it the furthest.
+
+Personally, I have more than a thousand hours in this game and have played it competitively against professionals and that is another aspect in which I enjoy. The mechanics: shooting, movement, teamplay, map knowledge, etc. are all down in an outstanding way and although this game is 16 years old it still outperforms many triple A games in its category.
+
+I think the replayability and the coop aspect of the game are its strong suits and they are definitely things I want to borrow when making games in the future. Nowadays games get boring quick since they get repetitive and if I could I would want to create something that feels unique after each playthrough similarly to L4D2.
+
+## Iterative Prototype Game | 03.06.25
+
+Starting off with the in class activity to brainstorm game ideas:
+
+TOWER DEFENCE BRAINSTORMING LIST
+
+Towers, monsters
+Defence, attack
+Fence?
+Gold, resources, managing people to work
+defending the castle,
+paths, pathing, walk, run, fly, dig?
+Shooting, spells, summoning units
+Necromancers, plants vs zombies, the disco guy
+placing buildings
+building types: magic, physical, unit summoning,
+stick man tower defence
+pvp tower defence where you summon units to fight each other
+archers, miners, barbarians,
+coop tower defence
+BTD monkeys and balloons
+pop
+spell casting
+I really like necromancy characters do this please
+Back to towers: stone, wood, gold, materials
+age games
+Age of Empires so aging up
+going from like cavemen -> renaissance -> modern idk
+rogue like tower defence game?
+how would that work
+maybe your build phase is going through a dungeon in a certain amount of time making it back then having to build
+if you don’t make it back like maze runner issue
+you’re trapped really hard to survive
+Maze?
+maze tower defence game.
+What are we defending?
+A base
+Castle?
+defending organs
+tower defence but its anatomy based
+so fighting diseases with like red/white blood cells
+gather water and sleep to build immune system lol
+lowkey some good ideas here
+maybe defending the hive
+OH OH
+I like the idea of reverse tower defence
+so instead of defending you have to attack a “base” that either is generated or someone else built
+Like PVZ when u play as the zombies is so cool
+
+IDEAS
+-	PVP tower defence where you summon units to fight against each other
+-	Rogue like tower defence game
+-	Zombie tower defence game where you are the zombies and have to beat premade base
+-	Disease tower defence game
+-	Hive game? Hive mind?
+-	Necromancer summoning zombies to defend castle
+-	Maze runner dungeon to gather resources then build eventually walls drop?
+
+SPEED DATING
+-	Make a room to defend treasure
+-	Target/Archer game with phones one person is target one is bow
+
+-	Using electricity and metal to shock things back to life
+-	Western where you manipulate each other to either pulling the trigger too fast or playing with someone’s head
+-	Cleaning a hedge maze for a king
+-	Bee espionage “ESBEENAGE”
+-	Gold horse amour
+
+-	Stealth game to use loud sounds (turning on stuff) to mask what you’re doing
+-	Begging game for smokes
+-	SoundScape (city/buildings making sounds)
+-	Using drugs as a resource to survive
+
+CONSTRAINT
+-	What if the game only took 1-2 minutes?
+
+Okay so my goal here is to make a quick tower defence game (maybe even 1v1) where you are limited by time to 
+gather resources to defend your base or attack the enemy base. Not sure how this will plan out but I will go with it.
+
+
+
+
 
