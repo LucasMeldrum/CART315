@@ -414,7 +414,17 @@ CONSTRAINT
 Okay so my goal here is to make a quick tower defence game (maybe even 1v1) where you are limited by time to 
 gather resources to defend your base or attack the enemy base. Not sure how this will plan out but I will go with it.
 
+I wasn't sure if I wanted the game to be 2D or 3D but I ended up going with 3D just to learn more and experiment with it. My goal was to get the 
+character, grid and being able to place towers down. So just simple stuff where I could then build off of it and modify it how I wanted.
 
+So using what I learnt from my previous 3D game I used the same player inputs and camera follow to make it. For the grid I used what I learnt during 
+the brick 
+breaker game and then modified it for 3D. For the tower placing I just made it so when spacebar is clicked a "Tower" appears where the player is 
+but it has no interaction or anything quite yet. I am not sure where I want to go from here so before I commit to much to one idea I want to just 
+think about my game and what I want to do...
 
+Here is what it looks like so far:
+<br>![Gameplay](Media/DemoGrid.gif)
 
-
+Simple enough so far and it can go in a lot of directions. At the moment i am thinking of a game where you have to defend something on the grid so 
+like a house and place blocks to delay/attack whatever is coming at you... Not sure right now but i'm happy with this start!
