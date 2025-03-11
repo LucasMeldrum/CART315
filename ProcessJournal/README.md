@@ -428,3 +428,43 @@ Here is what it looks like so far:
 
 Simple enough so far and it can go in a lot of directions. At the moment i am thinking of a game where you have to defend something on the grid so 
 like a house and place blocks to delay/attack whatever is coming at you... Not sure right now but i'm happy with this start!
+
+## Tower Defence #2 | 03.13.25
+
+This is the continuation of the Iterative Game Prototype from last week. Before starting I want to focus on the actual prototyping process instead 
+of just implementing and testing around. So I will establish a problem, solution and the risks that come with it.
+
+Problem: Come up with a new kind of tower defence game.
+
+Solution: Fast paced, simple, tower stacking/building defence game.
+
+Risks: 
+<br>How are the towers going to stack? 
+<br>How will it be fast paced?
+<br>How will the camera and player interact with different levels in 3D?
+
+So initially with these intentions I wanted to make the towers stack and also add a camera switch for top down view. What I came up with is towers 
+that stack on top of each other to a max of 5 (with limited towers per level). I also added to my camera from last week to add a top down view. 
+
+Here is what it looked like:
+<br>![TowerPlace+Camera](Media/TowerPlace.gif)
+
+By clicking Q or E you can switch between angled view and top down view to view your towers. I also allowed the towers to stack and implemented 
+their attacks as well (will be shown later). I want the tower defense to be unique by stacking different types of towers to defend. Next I needed 
+to implement the enemies moving/pathing between red and green, the towers shooting and all the main components of the tower defence game before I 
+continue with my problem statement.
+
+Done in class I added the pathing for the enemies. After that I was able to add the shooting from the towers (similar to my 3D game done 
+previously in class). Easy to implement.
+
+Here is what it looks like:
+<br>![Enemy Move](Media/EnemyMove.gif)
+<br>![TowerShooting](Media/TowerKill.gif)
+
+So they will path around the towers and get shot at. I can also increase/decrease their speed and increase their health. They take 1 health when 
+reaching the green from the player. I can change the 
+damage, range, stack height, and speed of the towers as well. So room to modify/balance. I want to focus primarily on the towers aspect of the 
+game and how that can be the central component so the game is unique. 
+
+My goal now that the tower defence components are implemented is to focus on my problem and solution and keep adding to that main aspect of the 
+game. I am definitely happy with what I have now however. Great week!
