@@ -468,3 +468,32 @@ game and how that can be the central component so the game is unique.
 
 My goal now that the tower defence components are implemented is to focus on my problem and solution and keep adding to that main aspect of the 
 game. I am definitely happy with what I have now however. Great week!
+
+## Tower Defence #3 | 03.13.25
+
+Okay starting this week I kinda felt stuck. I feel like I never polished out how my game was going to be fast-paced and what the final product 
+might look like. So for this week I want to go backwards a little. I have a lot of ideas I just want to write them out and confirm what my final 
+game could look like and how all the pieces will fall together. 
+
+Thinking about time... Speed... Fast-Paced. Looking at a clock for each wave. A setup period that then leads to the wave period. I think I want to 
+focus on extending the enemies time it takes to reach the green rather than killing them like most tower defence games. So what I am thinking is 
+the towers won't do damage unless it is a tower on top of 4 other blocks. To distinct this I want the gradient of the blocks to increase as they 
+go up and the top tower to be fully red. So no normal towers 1-4 will shoot the enemies and then the 5th one can. This will make the focus more 
+centralized on delaying the enemy to the point rather than killing them.
+
+Next. If the enemies don't die how do you win. Wave timer. Let's say a wave is 30 seconds long. And the goal of the wave is to delay the enemies 
+for 30 seconds and you win. So instead of having to defeat the wave just delay them. I like this idea since its unique and gives the player a rush 
+idea. Another aspect I want to implement is a setup/collecting phase before the wave begins where the player has to collect resources and place 
+towers in this time. To place the towers it would require lets say 1 resource (whatever that might be) and they will be scattered around the map. 
+To make it also on theme of this rush mechanic there will also be a countdown going. 
+
+The game 60 seconds is what I am thinking of. In that game the player must gather items for their bunker and they have 60 seconds before a nuke is 
+dropped and they die. If they do not make it within the 60 seconds / dont gather enough resources they will either lose on the spot or won't 
+survive long due to the lack or resources. I want the same concept here. The player will have to manage the collecting time of their resources as 
+well as the placement time before the wave starts. If they want more towers they can spend more time collecting resources however they'll have 
+less time to think about placement and delaying the enemy ti win.
+
+I like these ideas and it gives me an end goal for the game. So thats cool however I do not have much time this week to implement these ideas. 
+Will have to be during class time and the next week but I am happy with more of an ending of where this game will go so that makes me happy. I 
+also have so many ideas about sound and making the player feel STRESSED when playing by using sound to make the game become more and more intense 
+but I don't want to bore whoever is reading this with an essay right now so I will hopefully get the sound ideas out in a later week!
