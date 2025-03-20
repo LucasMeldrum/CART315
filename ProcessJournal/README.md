@@ -497,3 +497,20 @@ I like these ideas and it gives me an end goal for the game. So thats cool howev
 Will have to be during class time and the next week but I am happy with more of an ending of where this game will go so that makes me happy. I 
 also have so many ideas about sound and making the player feel STRESSED when playing by using sound to make the game become more and more intense 
 but I don't want to bore whoever is reading this with an essay right now so I will hopefully get the sound ideas out in a later week!
+
+Also heres what the tower looks with the color: 
+<br>![TowerColor](Media/TowerColor.png)
+
+Okay 1-1 notes:
+
+Game starts.
+Resource gather phase.
+Build phase.
+Wave starts + resource gather phase starts while wave is going.
+Build phase.
+Wave starts + resource gather phase starts while wave is going.
+Etc.
+
+Player never is doing nothing.
+Sound while timer is going
+Fast-Paced
