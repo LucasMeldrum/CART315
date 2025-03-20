@@ -162,9 +162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 250830520647100570, guid: 7a664265d3de14d47b4a3a46b23280d1, type: 3}
   firePoint: {fileID: 2775383691166568436}
-  range: 3
-  fireRate: 2
+  range: 5
+  fireRate: 1
   damage: 10
+  stackHeight: 1
 --- !u!65 &196633945801290325
 BoxCollider:
   m_ObjectHideFlags: 0

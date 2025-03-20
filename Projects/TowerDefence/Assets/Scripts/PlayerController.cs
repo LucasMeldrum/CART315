@@ -2,22 +2,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GridManager gridManager;
-    public Vector2Int gridPosition = new Vector2Int(0, 0);
+    public float moveSpeed = 5f; 
     public float heightAboveGrid = 1f;  
-    public GameObject towerPrefab;      
-
-    private void Start()
-    {
-        UpdatePlayerPosition();
-    }
+    public GameObject towerPrefab;  
+    public GridManager gridManager;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) Move(0, 1);
-        if (Input.GetKeyDown(KeyCode.S)) Move(0, -1);
-        if (Input.GetKeyDown(KeyCode.A)) Move(-1, 0);
-        if (Input.GetKeyDown(KeyCode.D)) Move(1, 0);
+        HandleMovement();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -25,67 +17,75 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Move(int x, int y)
+    // Smooth movement using WASD
+    private void HandleMovement()
     {
-        Vector2Int newPos = gridPosition + new Vector2Int(x, y);
+        float moveX = 0f;
+        float moveZ = 0f;
 
-        if (IsWithinGrid(newPos))
+        if (Input.GetKey(KeyCode.W)) moveZ = 1f;
+        if (Input.GetKey(KeyCode.S)) moveZ = -1f;
+        if (Input.GetKey(KeyCode.A)) moveX = -1f;
+        if (Input.GetKey(KeyCode.D)) moveX = 1f;
+
+        Vector3 moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
+
+        if (moveDirection.magnitude > 0)
         {
-            gridPosition = newPos;
-            UpdatePlayerPosition();
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
         }
     }
 
-    private void UpdatePlayerPosition()
-    {
-        Vector3 worldPos = gridManager.GetWorldPosition(gridPosition.x, gridPosition.y);
-        transform.position = new Vector3(worldPos.x, heightAboveGrid, worldPos.z);
-    }
-
+    // Place a tower and snap it to the nearest grid cell
     private void PlaceTower()
     {
-        Vector3 towerPosition = gridManager.GetWorldPosition(gridPosition.x, gridPosition.y);
-        Debug.Log("Tower Position: " + towerPosition);
-    
-        // Get current stack height for the grid position
-        int stackHeight = gridManager.GetStackHeight(gridPosition);
+        // Snap to nearest grid using Mathf.Round
+        Vector3 snappedPosition = new Vector3(
+            Mathf.Round(transform.position.x),
+            heightAboveGrid,
+            Mathf.Round(transform.position.z)
+        );
 
-        // Check if the stack height exceeds the maximum limit
+        Debug.Log($"Snapped Tower Position: {snappedPosition}");
+
+        // Calculate stacking
+        Vector2Int gridPos = new Vector2Int((int)snappedPosition.x, (int)snappedPosition.z);
+        int stackHeight = gridManager.GetStackHeight(gridPos);
+
         if (stackHeight >= gridManager.maxTowerStackHeight)
         {
-            Debug.Log("Max tower stack reached at position: " + gridPosition);
-            return; // Don't place more towers
+            Debug.Log("Max tower stack reached at position: " + snappedPosition);
+            return;
         }
 
-        // Calculate new tower position by stacking upwards
-        Vector3 stackedPosition = towerPosition + Vector3.up * (heightAboveGrid + (stackHeight * 1.2f)); 
+        // Adjust the Y position for stacking
+        snappedPosition.y += stackHeight * 1.2f;
 
-        Debug.Log("Stacked Position: " + stackedPosition);
-
-        // If no stacking, just place normally
-        if (GameManager.Instance.CanPlaceTower()) 
+        if (GameManager.Instance.CanPlaceTower())
         {
-            GameObject newTower = Instantiate(towerPrefab, stackedPosition, Quaternion.identity);
+            GameObject newTower = Instantiate(towerPrefab, snappedPosition, Quaternion.identity);
             newTower.tag = "Tower";
-        
-            // Increase the range of the tower as it stacks
+
             Tower towerScript = newTower.GetComponent<Tower>();
-            towerScript.range += stackHeight; // Increase range by 1 for each stack height
+            towerScript.range += stackHeight;
+            towerScript.stackHeight = stackHeight + 1; // Set the correct stack height
 
-            gridManager.BlockCell(gridPosition.x, gridPosition.y);
-            gridManager.IncrementStackHeight(gridPosition); // Increment the stack height
+            // Adjust color based on stack height
+            Renderer renderer = newTower.GetComponentInChildren<Renderer>();
+            if (renderer != null)
+            {
+                Color baseColor = Color.grey;
+                Color maxColor = Color.red;
+                float t = Mathf.Clamp01(stackHeight / (float)gridManager.maxTowerStackHeight);
+                renderer.material.color = Color.Lerp(baseColor, maxColor, t);
+            }
+
+            gridManager.BlockCell(gridPos.x, gridPos.y);
+            gridManager.IncrementStackHeight(gridPos);
+
             GameManager.Instance.AddTower();
-            Debug.Log("Tower Placed at: " + stackedPosition + " with range: " + towerScript.range);
+            Debug.Log($"Tower Placed at: {snappedPosition} with range: {towerScript.range} and stackHeight: {towerScript.stackHeight}");
         }
-        else
-        {
-            Debug.Log("No more towers allowed!");
-        }
-    }
 
-    private bool IsWithinGrid(Vector2Int position)
-    {
-        return position.x >= 0 && position.x < gridManager.width &&
-               position.y >= 0 && position.y < gridManager.height;
     }
 }

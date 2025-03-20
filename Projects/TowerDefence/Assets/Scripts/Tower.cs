@@ -7,14 +7,16 @@ public class Tower : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform firePoint;
     public float range = 3f;
-    public float fireRate = 2f;
+    public float fireRate = 0.5f;
     public int damage = 10;
+    public int stackHeight = 1; // Track which level of the stack the tower is
 
     private float fireCooldown = 0f;
-    private int upgradeLevel = 1; // Starts at level 1
 
     void Update()
     {
+        if (stackHeight < 5) return; // Only the 5th tower can shoot
+
         fireCooldown -= Time.deltaTime;
         Enemy target = FindTarget();
 
@@ -48,17 +50,17 @@ public class Tower : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Projectile projectileScript = projectile.GetComponent<Projectile>();
         projectileScript.SetTarget(target.transform);
-        projectileScript.damage = damage; // Apply tower's damage
+        projectileScript.damage = damage;
     }
 
     public void UpgradeTower()
     {
-        upgradeLevel++;
-        fireRate *= 0.9f; // Faster shooting (10% decrease)
-        damage += 5; // Increase damage
-        range += 0.5f; // Slightly increase range
-        transform.localScale += new Vector3(0.1f, 0.1f, 0.1f); // Make tower slightly bigger
-        
-        Debug.Log("Tower Upgraded! Level: " + upgradeLevel);
+        stackHeight++; // Increase stack height on upgrade
+        fireRate *= 0.9f;
+        damage += 5;
+        range += 0.5f;
+        transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+
+        Debug.Log("Tower Upgraded! Level: " + stackHeight);
     }
 }
