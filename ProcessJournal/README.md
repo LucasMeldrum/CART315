@@ -514,3 +514,44 @@ Etc.
 Player never is doing nothing.
 Sound while timer is going
 Fast-Paced
+
+## Tower Defence #4 | 03.27.25
+
+This week I implemented bunch of features nearing the final game. It is coming along nicely. Things I implemented this week:
+1. Resources
+2. Resource & Build Phase
+3. Enemy Phase
+4. UI for time/towers/health
+
+#### Resources
+Initially the resources just spanwed every second or so and in the grid itself. I made a prefab and made it so when in contact with the player, 
+the player would receive 2 more max towers that they could place. I then spawned the resources above the ground but it honestly looked better 
+stuck in the ground since it became a half circle so I kept it. Not much more to say here other than after the resrouce/build phase ends all of 
+the ones on the grid disappear from the map. 
+
+<br>![Resource](Media/Resource.png)
+
+#### Resource & Build Phase
+This took most of my time this week. Getting the player collecting and building in one phase and then not being able to do either in the next. I 
+also wanted a timer associated with that and since I have never really worked with Unity's time I had to get accustomed to it. Also was having 
+many issues spawning the grid and having the resources spawn at the same time so had to fix that as well. Overall got it completed but took me 
+some time. For now players have 60s to collect resources and build starting with 25 towers (+2 / resource as well).
+
+#### Enemy Phase
+Creating this phase was pretty simple after learning how to do it in the resource & build phase. I used the same concept as the other phase just 
+gave the enemies less time to reach the "target point" (currently at 15s). I imagine this number could start higher for early waves and decrease 
+as the wave numbers increase. Also for now the player has 10 health and only 5 enemies spawn for each wave but I will have to figure out a 
+solution to balancing the game once it is polished and tested.
+
+#### UI for time/towers/health
+Finally since I had all these mechanics of health, # of towers, and especially the time mechanic for each phase I thought it was a good time to 
+implement just a simple UI to track these values especially for testing purposes. Was pretty simple to do but took some time understanding how to 
+have UI elements that were associated with variables.
+
+<br>![UI](Media/UI.png)
+
+I am pretty happy where things are at right now. For my final week I want to add a proper game loop (so wave after wave until you lose), a menu, 
+sound for the phases, instructions for the game and sprties if I can get there. Just want to polish it off and make it playable. Oh and a LOSE 
+screen. I want to make it one of those games where you see the highest wave you can get to is. It will become more difficult with time since 
+you'll have less time to survive during the enemy phase and as time goes on you're towers will start dying.
+
