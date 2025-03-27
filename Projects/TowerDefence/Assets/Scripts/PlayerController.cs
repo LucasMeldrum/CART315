@@ -16,6 +16,18 @@ public class PlayerController : MonoBehaviour
             PlaceTower();
         }
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collided with" + gameObject);
+        if (other.CompareTag("Resource"))
+        {
+            GameManager.Instance.maxTowers += 2; // Increase max towers
+            Destroy(other.gameObject); // Remove red ball
+            Debug.Log("Collected Resource! Max Towers: " + GameManager.Instance.maxTowers);
+        }
+    }
+
 
     // Smooth movement using WASD
     private void HandleMovement()
