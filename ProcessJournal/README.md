@@ -555,3 +555,28 @@ sound for the phases, instructions for the game and sprties if I can get there. 
 screen. I want to make it one of those games where you see the highest wave you can get to is. It will become more difficult with time since 
 you'll have less time to survive during the enemy phase and as time goes on you're towers will start dying.
 
+## Tower Defence #5 | 04.03.25
+
+Big changes this week. Realized it was not the final week and decided to make the game work properly and fix everything, add a proper game loop 
+and a goal. So fixed all the phases, timers and winning/losing. Also spent a lot of time fixing an issue where players can just block off the 
+target point so that the enemies could never reach it. ALSO, added a main menu, and a lose screen so that the game is fully playable. Goal is to 
+just reach the highest wave at the moment. Last week definitely going to focus on just polishing stuff and adding those sound effects I was 
+talking about.
+
+Not much to note but here are the changes done this week (UI):
+
+#### Main Menu
+Simple main menu with start, controls, how to play and quit:
+<br>![MainMenu](Media/MainMenu.png)
+<br>![MainMenu](Media/HowToPlay.png)
+<br>![MainMenu](Media/Controls.png)
+
+GameOver screen when the player reaches 0 life left.
+<br>![GameOver](Media/GameOver.png)
+
+Although it seems like not much was done, the game is done. It loops perfectly and has no issues when playing. The waves and phases start and end 
+appropriately and it gets more difficult as time goes on. For now I commented out all the code for collapsing the towers at the end of each wave 
+since it is actually a lot harder to implement than I originally thought due to the way I have towers set up at the moment. However if I have time 
+for it I'll try to implement it for the final version.
+
+For now next week will just be polishing, adding sounds and sprites and just finalizing the game!
