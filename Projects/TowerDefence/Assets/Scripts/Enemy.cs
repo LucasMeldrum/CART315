@@ -45,6 +45,12 @@ public class Enemy : MonoBehaviour
         pathIndex = 0;
     }
     
+    public void RecalculatePath()
+    {
+        FindPath(); // Call FindPath again to update pathing
+    }
+
+    
     public void TakeDamage(int damage)
     {
         health -= damage;

@@ -43,6 +43,35 @@ public class GridManager : MonoBehaviour
     {
         blockedCells[x, y] = false;  // Remove blockage
     }
+    
+    public bool CanBlockCell(int x, int y)
+    {
+        // Temporarily mark the cell as blocked
+        bool originalState = blockedCells[x, y];
+        blockedCells[x, y] = true;
+
+        // Check if at least one path exists from spawn point(s) to target
+        bool pathExists = false;
+    
+        // If you have multiple spawn points, iterate through them
+        List<Vector2Int> spawnPoints = new List<Vector2Int> { spawnPoint }; // Add more if needed
+    
+        foreach (Vector2Int spawn in spawnPoints)
+        {
+            if (AStarPathfinding.FindPath(this, spawn, targetPoint) != null)
+            {
+                pathExists = true;
+                break; // Stop checking if a valid path is found
+            }
+        }
+
+        // Restore the original state
+        blockedCells[x, y] = originalState;
+
+        return pathExists; // True means at least one valid path remains
+    }
+
+
 
     // Get stack height for a specific grid position
     public int GetStackHeight(Vector2Int gridPosition)

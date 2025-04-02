@@ -19,14 +19,14 @@ public class PlayerController : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collided with" + gameObject);
         if (other.CompareTag("Resource"))
         {
-            GameManager.Instance.maxTowers += 2; // Increase max towers
-            Destroy(other.gameObject); // Remove red ball
-            Debug.Log("Collected Resource! Max Towers: " + GameManager.Instance.maxTowers);
+            GameManager.Instance.availableTowers += 2; // Only increase available towers
+            Destroy(other.gameObject);
+            Debug.Log("Collected Resource! Available Towers: " + GameManager.Instance.availableTowers);
         }
     }
+
 
 
     // Smooth movement using WASD
@@ -50,54 +50,63 @@ public class PlayerController : MonoBehaviour
 
     // Place a tower and snap it to the nearest grid cell
     private void PlaceTower()
+{
+    // Snap to nearest grid using Mathf.Round
+    Vector3 snappedPosition = new Vector3(
+        Mathf.Round(transform.position.x),
+        heightAboveGrid,
+        Mathf.Round(transform.position.z)
+    );
+
+    Debug.Log($"Snapped Tower Position: {snappedPosition}");
+
+    // Get grid position
+    Vector2Int gridPos = new Vector2Int((int)snappedPosition.x, (int)snappedPosition.z);
+
+    // Check if placing a tower would block the enemy path
+    if (!gridManager.CanBlockCell(gridPos.x, gridPos.y))
     {
-        // Snap to nearest grid using Mathf.Round
-        Vector3 snappedPosition = new Vector3(
-            Mathf.Round(transform.position.x),
-            heightAboveGrid,
-            Mathf.Round(transform.position.z)
-        );
-
-        Debug.Log($"Snapped Tower Position: {snappedPosition}");
-
-        // Calculate stacking
-        Vector2Int gridPos = new Vector2Int((int)snappedPosition.x, (int)snappedPosition.z);
-        int stackHeight = gridManager.GetStackHeight(gridPos);
-
-        if (stackHeight >= gridManager.maxTowerStackHeight)
-        {
-            Debug.Log("Max tower stack reached at position: " + snappedPosition);
-            return;
-        }
-
-        // Adjust the Y position for stacking
-        snappedPosition.y += stackHeight * 1.2f;
-
-        if (GameManager.Instance.CanPlaceTower())
-        {
-            GameObject newTower = Instantiate(towerPrefab, snappedPosition, Quaternion.identity);
-            newTower.tag = "Tower";
-
-            Tower towerScript = newTower.GetComponent<Tower>();
-            towerScript.range += stackHeight;
-            towerScript.stackHeight = stackHeight + 1; // Set the correct stack height
-
-            // Adjust color based on stack height
-            Renderer renderer = newTower.GetComponentInChildren<Renderer>();
-            if (renderer != null)
-            {
-                Color baseColor = Color.grey;
-                Color maxColor = Color.red;
-                float t = Mathf.Clamp01(stackHeight / (float)gridManager.maxTowerStackHeight);
-                renderer.material.color = Color.Lerp(baseColor, maxColor, t);
-            }
-
-            gridManager.BlockCell(gridPos.x, gridPos.y);
-            gridManager.IncrementStackHeight(gridPos);
-
-            GameManager.Instance.AddTower();
-            Debug.Log($"Tower Placed at: {snappedPosition} with range: {towerScript.range} and stackHeight: {towerScript.stackHeight}");
-        }
-
+        Debug.Log("Cannot place tower here! It would block all paths.");
+        return;
     }
+
+    // Calculate stacking
+    int stackHeight = gridManager.GetStackHeight(gridPos);
+    if (stackHeight >= gridManager.maxTowerStackHeight)
+    {
+        Debug.Log("Max tower stack reached at position: " + snappedPosition);
+        return;
+    }
+
+    // Adjust the Y position for stacking
+    snappedPosition.y += stackHeight * 1.2f;
+
+    if (GameManager.Instance.CanPlaceTower())
+    {
+        GameObject newTower = Instantiate(towerPrefab, snappedPosition, Quaternion.identity);
+        newTower.tag = "Tower";
+
+        Tower towerScript = newTower.GetComponent<Tower>();
+        towerScript.range += stackHeight;
+        towerScript.stackHeight = stackHeight + 1; // Set the correct stack height
+
+        // Adjust color based on stack height
+        Renderer renderer = newTower.GetComponentInChildren<Renderer>();
+        if (renderer != null)
+        {
+            Color baseColor = Color.grey;
+            Color maxColor = Color.red;
+            float t = Mathf.Clamp01(stackHeight / (float)gridManager.maxTowerStackHeight);
+            renderer.material.color = Color.Lerp(baseColor, maxColor, t);
+        }
+
+        // Block the cell and update stacking height
+        gridManager.BlockCell(gridPos.x, gridPos.y);
+        gridManager.IncrementStackHeight(gridPos);
+
+        GameManager.Instance.AddTower();
+        Debug.Log($"Tower Placed at: {snappedPosition} with range: {towerScript.range} and stackHeight: {towerScript.stackHeight}");
+    }
+}
+
 }
