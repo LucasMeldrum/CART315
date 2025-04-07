@@ -358,23 +358,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1440
-      height: 746
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 720, y: 373}
+      width: 862.5
+      height: 432
+    m_Scale: {x: 0.8, y: 0.8}
+    m_Translation: {x: 431.25, y: 216}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -720
-      y: -373
-      width: 1440
-      height: 746
+      x: -539.0625
+      y: -270
+      width: 1078.125
+      height: 540
     m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 2880, y: 1534}
+  m_defaultScale: 0.8
+  m_LastWindowPixelSize: {x: 1725, y: 906}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 89
+    y: 24
     width: 283
     height: 453
   m_SerializedDataModeController:
@@ -468,8 +468,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 284
-    y: 89
+    x: 285
+    y: 24
     width: 862.5
     height: 453
   m_SerializedDataModeController:
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 568
+    y: 503
     width: 1147.5
     height: 286
   m_SerializedDataModeController:
@@ -1171,7 +1171,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 50b90000
     m_LastClickedID: 47440
-    m_ExpandedIDs: 0000000066a7000068a700006aa700006ca700006ea7000050cd00007eda000000ca9a3b
+    m_ExpandedIDs: 000000003ea8000040a8000042a8000044a8000046a8000048a800004aa80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1200,7 +1200,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000066a7000068a700006aa700006ca700006ea7000050cd00007eda000000ca9a3b
+    m_ExpandedIDs: 000000003ea8000040a8000042a8000044a8000046a8000048a800004aa80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1315,8 +1315,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1148.5
-    y: 89
+    x: 1149.5
+    y: 24
     width: 290.5
     height: 765
   m_SerializedDataModeController:

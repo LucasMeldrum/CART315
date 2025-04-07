@@ -580,3 +580,54 @@ since it is actually a lot harder to implement than I originally thought due to 
 for it I'll try to implement it for the final version.
 
 For now next week will just be polishing, adding sounds and sprites and just finalizing the game!
+
+## Tower Defence FINAL #6 | 04.06.25
+
+Final Week! GAME IS DONE. A bunch was added this week. Music for the waves, sprites for the enemies, towers, and player (although they look goofy 
+first time really trying this). Text overlay and just simplification of the game. First time doing most of these and did not really have much time 
+but it looks finished and I am very happy with what I've accomplished. More details on this project and my thought process and how the prototyping 
+went after this weeks showcase. Also might update more of the game next week but only if I have time since finals are now.
+
+So this week heres what I added. I started originally with some text overlay showing which phase you are on for the first 2s of that phase and 
+added new fonts/color to the text on the screen to spice it up a little. It was pretty simple to implement for the overlay just had to set it to 
+active / not active when the phases change. I also added a black background to the game just to make the text clearer and the board space obvious. 
+I then added music for the build phase and music during the wave phase (heartbeat). They faze in and out and the heartbeat speeds up according to 
+the duration of the wave which is super cool. I am not sure how to show music/sound on github so. you'll have to take a look yourself.
+
+Next I added sprites to the towers, player and enemy. They are a little goofy and definitely was just playing around with them but I'm glad I got 
+to learn and experience them. I will link where I got the sprites from below at the end of the document. Here are the two final phases:
+
+<br>![BuildPhase](Media/BuildPhase.png)
+
+<br>![WavePhase](Media/WavePhase.png)
+
+The player is the slime (green) and the enemies are the UFO (black) the towers still change and turn red as they increase. I like how everything 
+looks and the simple aspect of the game. I also think the sprites are a little too much and keeping it simple makes it look better so maybe just 
+changing the model a little. For now I will leave it in how it is since it shows my progression but might change it later to better fit my 
+finalized version. 
+
+Anyways thats the game! It works, its playable, but its heavily unbalanced. I always have a difficult time balancing games since I overestimate 
+what players do / how they think. I've been playin boardgames and video games since I was like 4 years old so I have become accustomed to beating 
+games and finding the most optimized playstyles. For this game it is very easy if you know what you are doing. If not it is complicated and takes 
+time to learn/master so I will leave it as is.
+
+This experience was amazing and I am so glad to see the progression of my game in this way. I love where it started and re-iterating after each 
+week to improve on my prototype was fun. I am glad I started with an idea and was able to actually accomplish something that is playable and 
+(somewhat) fun. I think the idea is there but if I could redo it maybe switch how to game works and make it very very focused on the timer and 
+optimization. Maybe remove the grid idk. But overall I feel accomplished and satisfied with what I created. Honestly wish I could just focus on 
+creating a game and didn't feel rushed do to school, work and life. But I guess that is how it always is. This was a wonderful experience and I am 
+glad I got to execute it fully so thank you and thanks for whoever followed along this journey.
+
+Sprites, Fonts and  Sounds Used - Links
+
+Player Model:
+<br>https://www.cgtrader.com/items/4784201/download-page
+
+WavePhase + BuildPhase Music/Sound:
+<br>https://pixabay.com/sound-effects/search/chill%20game%20music/
+
+Text Font:
+<br>https://www.1001fonts.com/search.html?search=EPIC
+
+Towers/Enemy Models;
+<br>https://kenney.nl/assets/category:3D?sort=update
