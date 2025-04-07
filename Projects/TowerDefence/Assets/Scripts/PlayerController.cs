@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f; 
-    public float heightAboveGrid = 1f;  
+    public float moveSpeed = 5f;
+    public float heightAboveGrid = 0;  
     public GameObject towerPrefab;  
     public GridManager gridManager;
 
@@ -52,10 +52,7 @@ public class PlayerController : MonoBehaviour
     private void PlaceTower()
 {
     // Snap to nearest grid using Mathf.Round
-    Vector3 snappedPosition = new Vector3(
-        Mathf.Round(transform.position.x),
-        heightAboveGrid,
-        Mathf.Round(transform.position.z)
+    Vector3 snappedPosition = new Vector3(Mathf.Round(transform.position.x), heightAboveGrid, Mathf.Round(transform.position.z)
     );
 
     Debug.Log($"Snapped Tower Position: {snappedPosition}");

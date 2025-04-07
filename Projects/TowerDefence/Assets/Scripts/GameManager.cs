@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour {
     public GameObject critterPrefab;
     public GameObject resourcePrefab;
     public int playerHealth = 10;
-    //public int maxTowers = 25;
+    // public int maxTowers = 25;
     public int availableTowers = 25;
     private int waveNumber = 1;
-
+    private bool keepSpawning;
+    
     [Header("Phases Settings")] public float initialBuildPhaseDuration = 60f;
     public float initialWavePhaseDuration = 15f;
     private float buildPhaseDuration;
@@ -31,8 +32,17 @@ public class GameManager : MonoBehaviour {
 
     private List<GameObject> activeResources = new List<GameObject>();
     private List<GameObject> activeEnemies = new List<GameObject>();
-    public int enemiesToSpawn = 5;
+    // public int enemiesToSpawn = 5;
     private int currentTowers = 0;
+    
+    [Header("Overlay & Audio")]
+    public GameObject phaseOverlay; // A UI panel with Text inside
+    public TextMeshProUGUI phaseOverlayText;
+    public AudioSource waveMusicSource;
+    public AudioClip waveMusic;
+    public AudioSource buildMusicSource;
+    public AudioClip buildMusic;
+
 
     void Awake() {
         if (Instance == null)
@@ -62,7 +72,13 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
-
+    
+    private IEnumerator ShowPhaseOverlay(string phaseName, float duration = 2.5f) {
+        phaseOverlayText.text = phaseName;
+        phaseOverlay.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        phaseOverlay.SetActive(false);
+    }
 
     void UpdateUI() {
         towerText.text = "Towers: " + availableTowers;
@@ -76,26 +92,21 @@ public class GameManager : MonoBehaviour {
     }
 
     public void StartBuildPhase() {
-        if (gridManager == null) {
-            Debug.LogError("GridManager is null! Cannot start build phase.");
-            return;
-        }
-
         isBuildPhase = true;
         isResourcePhaseActive = false;
-    
         CleanupResources();
         timeRemaining = Mathf.Max(1f, buildPhaseDuration);
-    
-        Debug.Log("Build Phase Started!");
-    
-        // Delay path visualization to avoid null errors
-        StartCoroutine(DelayedPathUpdate());
 
+        Debug.Log("Build Phase Started!");
+        StartCoroutine(ShowPhaseOverlay("Build Phase"));
+        StartCoroutine(DelayedPathUpdate());
         StartCoroutine(StartResourcePhaseWithDelay(0.1f));
+        StopWaveMusic(); // stop wave music
+        PlayBuildMusic(); // start build music
         UpdateTimerDisplay();
         UpdateUI();
     }
+
 
     private IEnumerator DelayedPathUpdate() {
         yield return new WaitForSeconds(0.1f); // Small delay
@@ -103,9 +114,6 @@ public class GameManager : MonoBehaviour {
             pathVisualizer.Initialize(gridManager);
         }
     }
-
-
-
     private IEnumerator StartResourcePhaseWithDelay(float delay) {
         yield return new WaitForSeconds(delay);
         StartResourcePhase();
@@ -134,13 +142,19 @@ public class GameManager : MonoBehaviour {
 
     public void StartWavePhase() {
         isBuildPhase = false;
+        keepSpawning = true;
         timeRemaining = wavePhaseDuration;
+
         Debug.Log("Wave Phase Started!");
         StopAllCoroutines();
+        StartCoroutine(ShowPhaseOverlay("Wave Phase"));
+        StopBuildMusic();
+        PlayWaveMusic();
         StartCoroutine(WavePhaseTimer());
         StartCoroutine(SpawnEnemiesWithDelay());
         UpdateUI();
     }
+
 
     private IEnumerator WavePhaseTimer() {
         while (timeRemaining > 0) {
@@ -148,15 +162,17 @@ public class GameManager : MonoBehaviour {
             UpdateTimerDisplay();
             yield return null;
         }
-
+        
         EndWavePhase();
     }
 
     private IEnumerator SpawnEnemiesWithDelay() {
-        for (int i = 0; i < enemiesToSpawn; i++) {
-            SpawnEnemy();
-            yield return new WaitForSeconds(1f);
-        }
+        //for (int i = 0; i < enemiesToSpawn; i++) {
+            while (keepSpawning) { 
+                SpawnEnemy(); 
+                yield return new WaitForSeconds(1f); 
+            }
+        //}
     }
 
     private void SpawnEnemy() {
@@ -167,6 +183,7 @@ public class GameManager : MonoBehaviour {
 
     public void EndWavePhase() {
         Debug.Log("Wave Phase Ended! Cleaning up...");
+        keepSpawning = false;
         waveNumber++;
         PlayerPrefs.SetInt("FinalWave", waveNumber);
         foreach (GameObject enemy in activeEnemies) {
@@ -179,8 +196,8 @@ public class GameManager : MonoBehaviour {
 
         buildPhaseDuration = Mathf.Max(10f, buildPhaseDuration - 5f);
         wavePhaseDuration += 5f;
-        enemiesToSpawn++;
-        //CollapseTowers();
+        // enemiesToSpawn++;
+        // CollapseTowers();
         StartBuildPhase();
     }
 
@@ -233,6 +250,76 @@ public class GameManager : MonoBehaviour {
     public int GetWaveNumber() {
         return waveNumber;
     }
+    
+    private void PlayWaveMusic() {
+        if (waveMusicSource != null && waveMusic != null) {
+            waveMusicSource.clip = waveMusic;
+            waveMusicSource.loop = false;
+            waveMusicSource.pitch = 1f;
+            waveMusicSource.Play();
+            StartCoroutine(FadeAudio(waveMusicSource, 0.5f, 1f));
+            StartCoroutine(SpeedUpMusicOverTime(wavePhaseDuration));
+        }
+    }
+
+    private void StopWaveMusic() {
+        if (waveMusicSource != null) {
+            StartCoroutine(FadeAudio(waveMusicSource, 0f, 1f));
+        }
+    }
+
+    
+    private void PlayBuildMusic() {
+        if (buildMusicSource != null && buildMusic != null) {
+            buildMusicSource.clip = buildMusic;
+            buildMusicSource.loop = true;
+            buildMusicSource.Play();
+            StartCoroutine(FadeAudio(buildMusicSource, 0.5f, 1f)); // Adjust volume to taste
+        }
+    }
+
+    private void StopBuildMusic() {
+        if (buildMusicSource != null) {
+            StartCoroutine(FadeAudio(buildMusicSource, 0f, 1f));
+        }
+    }
+
+    private IEnumerator FadeAudio(AudioSource source, float targetVolume, float duration) {
+        if (source == null) yield break;
+    
+        float startVolume = source.volume;
+        float time = 0f;
+
+        while (time < duration) {
+            time += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, targetVolume, time / duration);
+            yield return null;
+        }
+
+        source.volume = targetVolume;
+
+        if (targetVolume == 0f) {
+            source.Stop();
+        }
+    }
+    
+    private IEnumerator SpeedUpMusicOverTime(float duration) {
+        float time = 0f;
+        float startPitch = 1f;
+        float endPitch = 1.5f; // Speed target
+
+        while (time < duration && waveMusicSource != null && waveMusicSource.isPlaying) {
+            time += Time.deltaTime;
+            waveMusicSource.pitch = Mathf.Lerp(startPitch, endPitch, time / duration);
+            yield return null;
+        }
+
+        waveMusicSource.pitch = endPitch;
+    }
+
+
+
+
 
     /*public void CollapseTowers() {
         Dictionary<Vector2Int, List<Tower>> towersByGridPos = new Dictionary<Vector2Int, List<Tower>>();
