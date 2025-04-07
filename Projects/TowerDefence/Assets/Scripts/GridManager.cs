@@ -7,7 +7,8 @@ public class GridManager : MonoBehaviour
     public int height = 10;
     public float cellSize = 1f;
     private Node[,] grid;
-
+    public PathVisualizer pathVisualizer; // Assign this in the Inspector
+    
     public GameObject gridCellPrefab;  
     public Color evenColor = Color.white;
     public Color oddColor = Color.black;
@@ -30,12 +31,14 @@ public class GridManager : MonoBehaviour
         towerStackHeights = new Dictionary<Vector2Int, int>(); // Initialize stack heights dictionary
         GenerateGrid();
         PlaceSpawnAndTarget();
+        pathVisualizer.UpdatePath();
     }
 
     // Block a cell when a tower is placed
-    public void BlockCell(int x, int y) 
+    public void BlockCell(int x, int y)
     {
-        blockedCells[x, y] = true;  // Mark cell as blocked
+        blockedCells[x, y] = true;
+        pathVisualizer.UpdatePath(); // Update visualization
     }
 
     // Unblock a cell if needed (e.g., for tower removal)
@@ -70,8 +73,6 @@ public class GridManager : MonoBehaviour
 
         return pathExists; // True means at least one valid path remains
     }
-
-
 
     // Get stack height for a specific grid position
     public int GetStackHeight(Vector2Int gridPosition)

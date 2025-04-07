@@ -11,12 +11,13 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI towerText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI waveText;
+    public PathVisualizer pathVisualizer;
 
     [Header("Game Settings")] public GridManager gridManager;
     public GameObject critterPrefab;
     public GameObject resourcePrefab;
     public int playerHealth = 10;
-    public int maxTowers = 25;
+    //public int maxTowers = 25;
     public int availableTowers = 25;
     private int waveNumber = 1;
 
@@ -41,11 +42,13 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
+        Debug.Log("Game Started! Setting up Build Phase.");
         buildPhaseDuration = initialBuildPhaseDuration;
         wavePhaseDuration = initialWavePhaseDuration;
-        StartBuildPhase();
+        StartBuildPhase(); 
         UpdateUI();
     }
+
 
     void Update() {
         if (isBuildPhase) {
@@ -73,14 +76,35 @@ public class GameManager : MonoBehaviour {
     }
 
     public void StartBuildPhase() {
+        if (gridManager == null) {
+            Debug.LogError("GridManager is null! Cannot start build phase.");
+            return;
+        }
+
         isBuildPhase = true;
-        isResourcePhaseActive = false; // Reset resource phase status
-        CleanupResources(); // Clear old resources
-        timeRemaining = buildPhaseDuration;
+        isResourcePhaseActive = false;
+    
+        CleanupResources();
+        timeRemaining = Mathf.Max(1f, buildPhaseDuration);
+    
         Debug.Log("Build Phase Started!");
+    
+        // Delay path visualization to avoid null errors
+        StartCoroutine(DelayedPathUpdate());
+
         StartCoroutine(StartResourcePhaseWithDelay(0.1f));
+        UpdateTimerDisplay();
         UpdateUI();
     }
+
+    private IEnumerator DelayedPathUpdate() {
+        yield return new WaitForSeconds(0.1f); // Small delay
+        if (pathVisualizer != null && gridManager != null) {
+            pathVisualizer.Initialize(gridManager);
+        }
+    }
+
+
 
     private IEnumerator StartResourcePhaseWithDelay(float delay) {
         yield return new WaitForSeconds(delay);
