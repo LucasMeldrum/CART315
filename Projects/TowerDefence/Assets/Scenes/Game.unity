@@ -1017,7 +1017,7 @@ MonoBehaviour:
   resourcePrefab: {fileID: 7589623037259086299, guid: d0f6d073a1443477d91c753a44585e98, type: 3}
   playerHealth: 10
   availableTowers: 25
-  initialBuildPhaseDuration: 30
+  initialBuildPhaseDuration: 45
   initialWavePhaseDuration: 5
   phaseOverlay: {fileID: 1210619857}
   phaseOverlayText: {fileID: 149063674}

@@ -618,7 +618,9 @@ optimization. Maybe remove the grid idk. But overall I feel accomplished and sat
 creating a game and didn't feel rushed do to school, work and life. But I guess that is how it always is. This was a wonderful experience and I am 
 glad I got to execute it fully so thank you and thanks for whoever followed along this journey.
 
-Sprites, Fonts and  Sounds Used - Links
+Link to the final game: [Rush Defence](CART315/RushDefence.app)
+
+Sprites, Fonts and Sounds Used - Links
 
 Player Model:
 <br>https://www.cgtrader.com/items/4784201/download-page
